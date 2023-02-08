@@ -9,25 +9,20 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/api', router);
 
 app.get('/', (req, res) => {	
 	console.log('start for Railway');
 	res.send('start !');
 });
 
-app.get('/message', (req, res) => {		
-	res.send({message: 'sometimes message'});
-});
-
-app.get('/api', (req, res) => {		
-	res.send('<h2>API</h2>');
-});
-
-app.get('/api/users', async (req, res) => {
-	const users = await db.query('SELECT * FROM Users');
-	
-	console.table(users.rows);
-	res.json(users.rows);
+app.post("/login2", function (req, res) {
+	console.log(req.body);
+	// let valid = req.body.password === 'passwordsecret' && req.body.email === 'admin@example.com';
+	let valid = req.body.password === '1' && req.body.email === '1';
+	console.log(valid);
+	if (!req.body) return res.sendStatus(400);
+	res.json(valid);
 });
 
 app.use((req, res) => {
