@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./db');
+const router = require('./routes/appRouter');
 
 // console.log(JSON.stringify(process.env))
 
