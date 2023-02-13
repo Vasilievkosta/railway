@@ -4,7 +4,7 @@ class UserController {
 
     async getAll(req, res) {
         const users = await db.query('SELECT users.id, users.userName, users.email, users.time, city.title FROM users JOIN city ON city.id=users.city_id');
-        console.table(users.rows);
+        console.log(users.rows);
         res.json(users.rows);
     }
 
